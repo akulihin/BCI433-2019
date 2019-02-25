@@ -1,0 +1,93 @@
+000001190208     A                                      DSPSIZ(24 80 *DS3)
+000002190208     A          R GETINFO
+000003190131     A                                  1 72DATE
+000004190131     A                                      EDTCDE(Y)
+000006190131     A                                  1  3USER
+000007190131     A                                  1 17'T r a f f i c  T i c k e t  I n f -
+000008190131     A                                      o r m a t i o n   '
+000009190131     A                                  3 23'You Demerit Point Total:'
+000011190131     A            DEMERITS       2  0B  3 49
+000012190131     A                                      RANGE(0 15)
+000013190131     A  99                                  DSPATR(PR)
+000015190131     A                                  5  1'Number of Traffic Tickets in last -
+000016190131     A                                      three years:'
+000017190131     A            NMTICKET       2  0B  5 49
+000018190131     A  99                                  DSPATR(PR)
+000019190208     A                                  7  1'Is this a new impaired conviction?'
+000020190208     A            IMPAIRED       1   B  7 36
+000021190208     A                                      VALUES('Y' 'N')
+000022190131     A  99                                  DSPATR(PR)
+000024190208     A                                  7 38'(N or Y)'
+000025190131     A                                  9 25'Yearly Insurance Cost:'
+000026190131     A            INSURANCE      7  2B  9 49
+000027190131     A  99                                  DSPATR(PR)
+000028190131     A                                      EDTCDE(2)
+000029190131     A                                  2  3'Artem Kulihina'
+000035190208     A                                  7 47'What impaired occurence number?'
+000036190208     A                                      DSPATR(RI)
+000037190208     A  01                                  DSPATR(ND)
+000038190208     A            IMPAIREDNU     1N 0B  7 79
+000039190208     A  77                                  DSPATR(PR)
+000040190208     A  02                                  DSPATR(ND)
+000041190208     A  03                                  DSPATR(PC)
+000060190208     A          R SHOWRESULT
+000061190208     A                                      OVERLAY
+000062190208     A                                      CF03(03 'Exit')
+000063190208     A  78                                  CF06(06 'Help')
+000064190208     A            DEMERITS       2  0O 11  3
+000065190208     A                                 11  7'demerit points in Ontario results -
+000066190208     A                                      in:'
+000067190208     A            RESULT1       75   O 13  5
+000068190208     A  87                                  DSPATR(RI)
+000069190208     A                                 15  2'Action by Incurance company with'
+000070190208     A                                 15 38'tickets: '
+000071190208     A            NMTICKET       2S 0O 15 35
+000072190208     A            RESULT2       75   O 17  5
+000074190208     A  49                                  DSPATR(RI)
+000075190208     A                                 23  1'Your new insurance rate based on n-
+000076190208     A                                      umber of tickets is:'
+000077190208     A                                 19  2'Impaired Driving:'
+000078190208     A  45                                  DSPATR(ND)
+000079190208     A            RESULT3       75     21  5
+000080190208     A  45                                  DSPATR(ND)
+000081190208
+000082190208     A            NEWRATE        8Y 2O 23 57EDTCDE(1 $)
+000083190208     A                                 24  5'F3 - EXIT'
+000092190208     A                                 15 55'Impaired Ticket'
+000094190208     A                                      COLOR(RED)
+000095190208     A                                      DSPATR(RI)
+000096190208     A  45                                  DSPATR(ND)
+000099190208     A                                 24 18'F6 - Impaired Driving'
+000100190208     A  45                                  DSPATR(ND)
+000102190208     A          R IMPDETAIL
+000103190208     A                                  4  1'First offence:'
+000104190208     A                                  5 10'3-day licence suspension. This can-
+000105190208     A                                      not be appealed.'
+000106190208     A                                  6 10'$250 penalty (begins January 2019)'
+000107190208     A                                  8  1'Second offence within 5 years'
+000108190208     A                                  9  8'7-day licence suspension (3-day su-
+000109190208     A                                      spension for commercial drivers). '
+000110190208     A                                 10  8' $350 penalty (begins January 2019-
+000111190208     A                                      )'
+000112190208     A                                 11  8'You must attend a mandatory educat-
+000113190208     A                                      ion program'
+000114190208     A                                 13  2'Third and subsequent offences with-
+000115190208     A                                      in 5 years'
+000116190208     A                                 14  8'30-day licence suspension (3-day s-
+000117190208     A                                      uspension for commercial drivers).'
+000118190208     A                                  2 16'Detailed Impaired Driving Informat-
+000119190208     A                                      ion'
+000120190208     A                                 15  8'$450 penalty (begins January 2019)'
+000121190208     A                                 16  8'You must attend a mandatory treatm-
+000122190208     A                                      ent program'
+000123190208     A                                 17  8'You will be required to use an ign-
+000124190208     A                                      ition interlock device for 6 months'
+000125190208     A                                 18  8'You will need to undergo a mandato-
+000126190208     A                                      ry medical evaluation '
+000127190208     A                                 20  1'Penalties for a BAC Over the Legal-
+000128190208     A                                       Limit, Refuse Testing or Impairmen-
+000129190208     A                                      t'
+000130190208     A                                 21  8'90-day licence suspension'
+000131190208     A                                 22  8'7-day vehicle impoundment'
+000132190208     A                                 23  8'$550 penalty (begins January 2019)-
+000133190208     A                                       and $275 licence reinstatement fee'

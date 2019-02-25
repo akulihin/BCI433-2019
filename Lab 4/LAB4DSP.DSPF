@@ -1,0 +1,28 @@
+000100190221     A                                      DSPSIZ(24 80 *DS3)
+000101190221     A          R RECORD1
+000102190221     A                                      CF03(03 'EXIT')
+000103190221     A                                      CF21(21 'QUSCMDLN')
+000104190221     A                                  1 65DATE EDTCDE(Y)
+000105190221     A                                  2 65TIME
+000106190221     A                                  1 38'Lab 4'
+000107190221     A                                  5  3'Please select one of the following-
+000108190221     A                                       options:'
+000109190221     A                                  8 14'2.  Password Expiry Interval'
+000110190221     A                                  7 14'1.  Run Highway Toll Program'
+000111190221     A                                  9 14'3.  Signed on User''s Message Queu-
+000112190221     A                                      e'
+000113190221     A                                 15 17'Option:'
+000114190221     A                                 23  4'F3=Exit'
+000115190221     A                                 23 17'F21=Command Line'
+000117190222     A                                  1  3'Artem Kulihina'
+000118190221     A                                 10 14'4.  Initial number of active jobs -
+000119190221     A                                      for storage allocation'
+000120190221     A                                 11 14'5.  Previous sign on by signed on -
+000121190221     A                                      user'
+000122190221     A            OPTION         2A  B 15 25VALUES('1' '2' '3' '4' '5' '6'
+000123190221     A                                      '01' '02' '03' '04' '05' '06')
+000124190221     A  30                                  DSPATR(RI)
+000125190221     A  30                                  DSPATR(PC)
+000126190221     A            MSGTXT1       70   O 17  6
+000127190221     A            MSGTXT2       70   O 18  6
+000128190221     A            INVALID       31   O 15 29

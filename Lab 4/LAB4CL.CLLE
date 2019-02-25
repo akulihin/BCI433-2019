@@ -1,0 +1,92 @@
+000100190221             PGM
+000101190221             DCLF       LAB4DSP
+000102190221             DCL        &MSGQ *CHAR 10
+000103190221             DCL        &MSGQLIB *CHAR 10
+000104190221             DCL        &QACTJOB *DEC 5
+000105190221             DCL        &QACTJOBCH *CHAR 5
+000106190221             DCL        &DATE *CHAR 8
+000107190221             DCL        &TIME *CHAR 8
+000108190221             DCL        &PVSN *CHAR 13
+000109190222             dcl        &MAX *CHAR 6
+000110190222
+000111190222
+000112190221             SndRcvf
+000113190221             DoWhile    (&in03 = '0')
+000114190221
+000115190221                Select
+000116190221                   When       (&Option = '1' *or &option = '01') CallSubr OPTION1
+000117190221                   When       (&Option = '2' *or &option = '02') CallSubr OPTION2
+000118190221                   When       (&Option = '3' *or &option = '03') CallSubr OPTION3
+000119190221                   When       (&Option = '4' *or &option = '04') CallSubr OPTION4
+000120190221                   When       (&Option = '5' *or &option = '05') CallSubr OPTION5
+000121190221                   Otherwise  CallSubr INVALID
+000122190221                EndSelect
+000123190221                Select
+000124190221                   WHEN       (&in21 = '1') CALL QUSCMDLN
+000125190221                EndSelect
+000126190221                SndRcvf
+000127190221             Enddo
+000128190222
+000129190222
+000130190222
+000131190221             SUBR       OPTION1
+000132190222                DSPLIBL
+000133190222                CHGCURLIB  BCI433LIB
+000134190222                CALL       TICKETRPG2
+000135190222                CHGCURLIB  WS433B13
+000136190222                DSPLIBL
+000137190222                CHGVAR     &MSGTXT1 ('The Instructior Version of the Ticket RPGLE program was +
+000138190222                             run')
+000139190222                CHGVAR     &MSGTXT2 ('CLLE Programs can manage how an RPGLE Business +
+000140190222                             Application is run')
+000141190221             EndSubr
+000142190221             SUBR       OPTION2
+000143190222                RTVSYSVAL  SYSVAL(QMAXSIGN) RTNVAR(&MAX)
+000144190222                CHGVAR     &MSGTXT1 ('Maximum invalid signons allowed:' *Bcat &MAX *Bcat +
+000145190222                             '(tries)')
+000146190221                CHGVAR     &MSGTXT2 ('CLLE Programs can report on the system and manage system +
+000147190221                             wide settings')
+000148190221                CHGVAR     &INVALID ' '
+000149190221
+000150190221             EndSubr
+000151190221             SUBR       OPTION3
+000152190221                RTVUSRPRF  MSGQ(&MSGQ) MSGQLIB(&MSGQLIB)
+000153190221                CHGVAR     &MSGTXT1 ('Signed on User''s message queue is' *BCAT &MSGQLIB *TCAT +
+000154190221                             '/' *CAT &MSGQ)
+000155190221                CHGVAR     &MSGTXT2 ('CLLE Programs can report on and manage the users on the +
+000156190221                             system')
+000157190221                CHGVAR     &INVALID ' '
+000158190221
+000159190221             EndSubr
+000160190221             SUBR       OPTION4
+000161190221                RTVSYSVAL  SYSVAL(QACTJOB) RTNVAR(&QACTJOB)
+000162190221                CHGVAR     &QACTJOBCH &QACTJOB
+000163190221                CHGVAR     &MSGTXT1 ('Initial number of active jobs for which storage is +
+000164190221                             allocated is: ' *BCAT &QACTJOBCH)
+000165190221                CHGVAR     &MSGTXT2 ('CLLE Programs can report on the system and manage system +
+000166190221                             wide settings')
+000167190221                CHGVAR     &INVALID ' '
+000168190221             EndSubr
+000169190221             SUBR       OPTION5
+000170190221                RTVUSRPRF  PRVSIGN(&PVSN) USRPRF(*CURRENT)
+000171190221                RTVUSRPRF  RTNUSRPRF(&MSGQ) USRPRF(*CURRENT)
+000172190221                CHGVAR     &DATE (%SST(&PVSN 4 2) *CAT '/' *CAT %SST(&PVSN 6 2) *CAT '/' *CAT +
+000173190221                             %SST(&PVSN 2 2))
+000174190221                CHGVAR     &TIME (%SST(&PVSN 8 2) *CAT ':' *CAT %SST(&PVSN 10 2) *CAT ':' *CAT +
+000175190221                             %SST(&PVSN 12 2))
+000176190221                CHGVAR     &MSGTXT1 ('Previous sign on for user ' *BCAT &MSGQ *BCAT 'was on ' +
+000177190221                             *CAT &DATE *BCAT &TIME)
+000178190221                CHGVAR     &MSGTXT2 ('CLLE Programs can report on and manage the users on the +
+000179190221                             system')
+000180190221                CHGVAR     &INVALID ' '
+000181190221             EndSubr
+000182190221             SUBR       INVALID
+000183190221                CHGVAR     &INVALID 'Valid option must be entered'
+000184190221                CHGVAR     &in30 '1'
+000185190221                CHGVAR     &MSGTXT1 ' '
+000186190221                CHGVAR     &MSGTXT2 ' '
+000187190221             EndSubr
+000188190222
+000189190222
+000190190221
+000191190221             ENDPGM
