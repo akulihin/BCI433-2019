@@ -1,0 +1,59 @@
+000100190306     A          R TITLE
+000101190306     A                                  1  5DATE
+000102190306     A                                      EDTCDE(Y)
+000103190306     A                                  1 17TIME
+000104190306     A                                  1 47'Weekly Payroll Report'
+000105190306     A                                  1 87'Page:'
+000106190306     A                                  1 93PAGNBR
+000107190306     A                                  2  2'Name:'
+000108190306     A                                  2  8'Artem Kulihina'
+000109190306     A          R COLHDG
+000110190306     A                                     4'Employee '
+000111190306     A                                      SPACEB(1)
+000112190306     A                                    18'Work'
+000113190306     A                                    29'Pay'
+000114190306     A                                    37'Hourly'
+000115190306     A                                    47'Hours'
+000116190306     A                                    57'Regular'
+000117190306     A                                    71'Overtime'
+000118190306     A                                    87'Total'
+000119190306     A                                     5'Number'
+000120190306     A                                      SPACEB(1)
+000121190306     A                                    18'Shift'
+000122190306     A                                    29'Grade'
+000123190306     A                                    38'Rate'
+000124190306     A                                    47'Worked'
+000125190306     A                                    59'Pay'
+000126190306     A                                    73'Pay'
+000127190306     A                                    88'Pay'
+000128190306     A          R EMPDETAIL                 SPACEB(4)
+000129190306     A            EMPNUM    R              4REFFLD(ALLSHIFT/EMPNUM SENECAPAY/AL-
+000130190306     A                                      LSHIFT)
+000131190306     A                                      EDTWRD('0   -   -   ')
+000132190306     A            WORKSHIFT R             20REFFLD(ALLSHIFT/WORKSHIFT +
+000133190306     A                                      SENECAPAY/ALLSHIFT)
+000134190306     A            PAYGRADE  R             30REFFLD(ALLSHIFT/PAYGRADE +
+000135190306     A                                      SENECAPAY/ALLSHIFT)
+000136190306     A            HOURLYRATE     5  2     36EDTCDE(1)
+000137190306     A            HRSWORKED R             49REFFLD(ALLSHIFT/HRSWORKED +
+000138190306     A                                      SENECAPAY/ALLSHIFT)
+000139190306     A                                      EDTCDE(2)
+000140190306     A            REGULARPAY     7  2     57EDTCDE(1)
+000141190306     A            OVERPAY        7  2     71EDTCDE(1)
+000142190306     A            TOTALPAY       7  2     85EDTCDE(1)
+000143190306     A          R TOTALS                    SPACEB(2)
+000144190306     A                                    36'Totals:'
+000145190306     A                                      SPACEB(2)
+000146190306     A            TOTREGPAY      9  2     53EDTCDE(1 $)
+000147190306     A            TOTOVTPAY      9  2     69EDTCDE(1 $)
+000148190306     A            TOTEMPPAY      9  2     84EDTCDE(1 $)
+000149190306
+000150190306     A*%%RS+<record-sequences>
+000151190306     A*%%RS+ <sequence name="REPORT1">
+000152190306     A*%%RS+  <device type="printer" width="132" height="66" />
+000153190306     A*%%RS+  <record-write record-format="TITLE" />
+000154190306     A*%%RS+  <record-write record-format="COLHDG" />
+000155190306     A*%%RS+  <record-write record-format="EMPDETAIL" />
+000156190306     A*%%RS+  <record-write record-format="TOTALS" />
+000157190306     A*%%RS+ </sequence>
+000158190306     A*%%RS </record-sequences>

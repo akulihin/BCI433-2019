@@ -1,0 +1,65 @@
+PGM
+
+DCL     &OutQ       *CHAR 10
+DCL     &OutQLib    *CHAR 10
+DCL     &Shift      *CHAR 1
+DCL     &ShiftType  *CHAR 30
+
+RTVUSRPRF OUTQ(&OUTQ) OUTQLIB(&OUTQLIB)
+
+CLROUTQ &OutQLib/&OutQ
+
+ADDLIBLE SENECAPAY
+MONMSG MSGID(CPF0000)
+
+SNDUSRMSG MSG(`1 - Day Shift, 2 - Night Shift, 3 - Afternoon Shift, 4 - All Shifts, 5 - EXIT`) MSGRPY(&SHIFT)
+
+DOWHILE (&Shift *NE '5')
+        SELECT
+            When (&Shift = '1')
+                Do
+                    CHGVAR &ShiftType 'D A Y  S H I F T'
+                    OVRPRTF PAYRPT2 SPLFNAME(DAYSHIFT)
+                    OVRDBF ALLSHIFT DAYS
+                    CALL PAYROLLPG2 PARM(&ShiftType)
+                    DSPSPLF DAYSHIFT SPLNBR(*LAST)
+                ENDDO
+
+            When (&Shift = '2')
+                Do
+                    CHGVAR &ShiftType 'N I G H T  S H I F T'
+                    OVRPRTF PAYRPT2 SPLFNAME(NIGHTSHIFT)
+                    OVRDBF ALLSHIFT NIGHTS
+                    CALL PAYROLLPG2 PARM(&ShiftType) // this is dynamic CALL - Linkage occurs at runtime
+
+                    //
+                    // Static call - lincage occurs ONCE at pre Run Time
+                    // DSPPGM PAYROLL DETAIL(*MODULE) - proof I have 2 modules
+                    //
+
+                    DSPSPLF NIGHTSHIFT SPLNBR(*LAST)
+                ENDDO
+            When (&Shift = '3')
+                Do
+.......
+                ENDDO
+            When (&Shift = '4')
+                Do
+.......
+                ENDDO
+            When (&Shift = '5')
+                Do
+        // I have photos for these
+                ENDDO
+        ENDSELECT
+
+        // I have photos for these
+        // I have photos for these
+        // I have photos for these
+SNDUSRMSG MSG('1 )
+ENDDO //dowhile
+
+SNDUSRMSG MSG('Okay to clear out an output quie in schol  - never at work' )
+
+WRKOUT &OutQLib/&OutQ
+ENDPGM
