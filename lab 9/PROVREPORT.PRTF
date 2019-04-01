@@ -1,0 +1,55 @@
+000001190313     A          R TITLE
+000002190314     A                                  2 39'C u s t o m e r s  >'
+000003190314     A            LOWLIMIT       7  2   2 60EDTCDE(1 $)
+000004190313     A          R HEADINGS                  SPACEB(2)
+000007190313     A                                     4'Province'
+000008190313     A                                    19'Customer ID'
+000009190313     A                                    36' Full Name'
+000010190313     A                                    62'City'
+000011190313     A                                    83'Purchase'
+000012190313     A                                   100'Purchase'
+000013190313     A                                    84'Amount'
+000014190313     A                                      SPACEB(1)
+000015190313     A                                   102'Date'
+000016190313     A          R NEWPROV                   SPACEB(1)
+000017190313     A            PROVINCE      10         3
+000018190313     A          R DETAIL
+000019190313     A            CUSTID    R             20
+000020190313     A                                      REFFLD(ONTARIO/CUSTID BCI433LIB/ONT-
+000021190313     A                                      ARIO)
+000022190313     A                                      SPACEB(1)
+000023190313     A            FULLNAME      31        28
+000024190313     A            CITY      R             60REFFLD(ONTARIO/CITY BCI433LIB/ONTAR-
+000025190313     A                                      IO)
+000026190313     A            PURCHASE  R             83REFFLD(ONTARIO/PURCHASE BCI433LIB/O-
+000027190313     A                                      NTARIO)
+000028190313     A                                      EDTCDE(1)
+000030190313     A            PDATE     R             99
+000031190313     A                                      REFFLD(ONTARIO/PDATE BCI433LIB/ONTA-
+000032190313     A                                      RIO)
+000038190313     A          R UNDERLIMIT                SPACEB(2)
+000039190313     A                                    46'C u s t o m e r s   <='
+000040190314     A            LOWLIMIT       7  2     70EDTCDE(1 $)
+000041190313     A                                     6'Ontario'
+000042190313     A                                      SPACEB(2)
+000043190313     A                                    23'Quebec'
+000044190313     A                                    39'Manitoba'
+000046190314     A            ONTTOTAL       3  0      8SPACEB(2)
+000047190314     A                                      EDTCDE(1)
+000048190314     A            QUETOTAL       3  0     24EDTCDE(1)
+000050190314     A            MANTOTAL       3  0     40EDTCDE(1)
+000051190313     A          R TOTALS                    SPACEB(2)
+000054190313     A                                    67'Total Amount:'
+000055190314     A            TOTALPURCH     8  2     82EDTCDE(1 $)
+000100
+000101190314     A*%%RS+<record-sequences>
+000102190314     A*%%RS+ <sequence name="Untitled">
+000103190314     A*%%RS+  <device type="printer" width="132" height="66" />
+000104190314     A*%%RS+  <record-write record-format="TITLE" />
+000105190314     A*%%RS+  <record-write record-format="HEADINGS" />
+000106190314     A*%%RS+  <record-write record-format="NEWPROV" />
+000107190314     A*%%RS+  <record-write record-format="DETAIL" />
+000108190314     A*%%RS+  <record-write record-format="TOTALS" />
+000109190314     A*%%RS+  <record-write record-format="UNDERLIMIT" />
+000110190314     A*%%RS+ </sequence>
+000111190314     A*%%RS </record-sequences>

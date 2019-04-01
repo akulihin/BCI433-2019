@@ -1,0 +1,56 @@
+000000190315             PGM
+000000190315             DCL        &SHIFT *CHAR 1
+000000190315             DCL        &OUTQ *CHAR 10
+000000190315             DCL        &OUTQLIB *CHAR 10
+000000190315             DCL        &SHIFTTYPE *CHAR 30
+000000190315
+000000190315             RTVUSRPRF  OUTQ(&OUTQ) OUTQLIB(&OUTQLIB)
+000000190315             CLROUTQ    &OUTQLIB/&OUTQ
+000000190315             ADDLIBLE   SENECAPAY
+000000190315             MONMSG     MSGID(CPF0000)
+000000190315
+000000190315             SNDUSRMSG  MSG('1 - Day Shift, 2 - Night Shift, 3 - Afternoon Shift, 4 - All +
+000000190315                          Shift 5 - EXIT') MSGRPY(&SHIFT)
+000000190315             DOWHILE    (&SHIFT *NE '5')
+000000190315                SELECT
+000000190315                   WHEN       (&SHIFT = '1') DO
+000000190315                      CHGVAR     &SHIFTTYPE 'D A Y  S H I F T'
+000000190315                      OVRPRTF    FILE(PAYRPT2) SPLFNAME(DAY)
+000000190315                      OVRDBF     ALLSHIFT DAY
+000000190315                      CALL       PGM(PAYROLLPG2) PARM(&SHIFTTYPE)
+000000190315                      DSPSPLF    FILE(DAY) SPLNBR(*LAST)
+000000190315                      WRKSPLF
+000000190315                   ENDDO
+000000190315                   WHEN       (&SHIFT = '2') DO
+000000190315                      CHGVAR     &SHIFTTYPE 'N I G H T  S H I F T'
+000000190315                      OVRPRTF    FILE(PAYRPT2) SPLFNAME(NIGHT)
+000000190315                      OVRDBF     ALLSHIFT NIGHT
+000000190315                      CALL       PGM(PAYROLLPG2) PARM(&SHIFTTYPE)
+000000190315                      DSPSPLF    FILE(NIGHT) SPLNBR(*LAST)
+000000190315                      WRKSPLF
+000000190315                   ENDDO
+000000190315                   WHEN       (&SHIFT = '3') DO
+000000190315                      CHGVAR     &SHIFTTYPE 'A F T E R N O O N  S H I F T'
+000000190315                      OVRPRTF    FILE(PAYRPT2) SPLFNAME(AFTERNOON)
+000000190315                      OVRDBF     ALLSHIFT AFTERNOON
+000000190315                      CALL       PGM(PAYROLLPG2) PARM(&SHIFTTYPE)
+000000190315                      DSPSPLF    FILE(AFTERNOON) SPLNBR(*LAST)
+000000190315                      WRKSPLF
+000000190315                   ENDDO
+000000190315                   WHEN       (&SHIFT = '4') DO
+000000190315                      CHGVAR     &SHIFTTYPE 'A L L  S H I F T S'
+000000190315                      OVRPRTF    FILE(PAYRPT2) OVRFLW(25) SPLFNAME(ALLSHIFTS)
+000000190315                      OVRDBF     ALLSHIFT ALLSHIFTS
+000000190315                      CALL       PGM(PAYROLLPG2) PARM(&SHIFTTYPE)
+000000190315                      DSPSPLF    FILE(ALLSHIFTS) SPLNBR(*LAST)
+000000190315                      WRKSPLF
+000000190315                   ENDDO
+000000190315                   WHEN       (&SHIFT *NE '5') SNDUSRMSG MSG(&SHIFT *CAT ' Invalid +
+000000190315                                Selection.Please ENTER to continue.')
+000000190315                ENDSELECT
+000000190315                SNDUSRMSG  MSG('1 - Day Shift, 2 - Night Shift, 3 - Afternoon Shift, 4 - All +
+000000190315                             Shift 5 - EXIT') MSGRPY(&SHIFT)
+000000190315             ENDDO
+000000190315 WRKOUTQ    &OUTQLIB/&OUTQ
+000000190315 ENDPGM
+000000190315

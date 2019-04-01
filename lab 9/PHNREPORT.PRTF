@@ -1,0 +1,61 @@
+000001190314     A          R HEADINGS
+000002190313     A                                  2  6'User:'
+000003190313     A                                  1  1'Timestamp:'
+000004190313     A                                  3  3'Server:'
+000005190313     A                                  1105'Page:'
+000006190313     A                                  1112PAGNBR
+000007190313     A            TIMESTAMP       Z     1 12
+000008190313     A            USER          10      2 12
+000009190313     A            SERVER        10      3 12
+000010190313     A                                  2 48'P H O N E   L O G   R E P O R T'
+000011190313     A                                  5  3'Sales'
+000012190313     A                                  6  4'ID'
+000013190313     A                                  5 11'Customer'
+000014190313     A                                  5 27'Customer Name'
+000015190313     A                                  6 11'Number'
+000016190313     A                                  6 78'Called'
+000017190313     A                                  5 59'Telephone'
+000018190313     A                                  5 77'Last Date'
+000019190313     A                                  5 90'Oldest Call'
+000020190313     A                                  6 94'Date'
+000021190313     A                                  5103'Next Call'
+000022190313     A                                  6105'Date'
+000023190314     A                                  7131'*'
+000024190314     A          R DETAIL                    SPACEB(1)
+000025190313     A            CSTSLN    R              3REFFLD(CONTACTW19/CSTSLN +
+000026190313     A                                      BCI433LIB/CONTACTW19)
+000028190313     A            CSTNUM    R             11
+000029190313     A                                      REFFLD(CUSTOMER19/CSTNUM +
+000030190313     A                                      BCI433LIB/CUSTOMER19)
+000032190313     A            CSTNAM    R             22REFFLD(CUSTOMER19/CSTNAM +
+000033190313     A                                      BCI433LIB/CUSTOMER19)
+000035190313     A            CSTPHN    R             57REFFLD(CONTACTW19/CSTPHN +
+000036190313     A                                      BCI433LIB/CONTACTW19)
+000038190313     A            PHNLDC    R             77REFFLD(CONTACTW19/PHNLDC +
+000039190313     A                                      BCI433LIB/CONTACTW19)
+000041190313     A            FLAG           8        91
+000042190313     A            NEXTCDATE       L      103
+000043190313     A          R SUMMARY                   SPACEB(3)
+000046190313     A                                    12'S U M M A R Y   I N F O R M A T I -
+000047190313     A                                      O N'
+000050190313     A                                     2'CONTACTW19 Total Records:'
+000051190313     A                                      SPACEB(2)
+000052190313     A            CONTACTT       5  0     27EDTCDE(1)
+000053190313     A                                    44'Oldest Last Callback Date:'
+000054190313     A            OLDESTDATE      L       71
+000055190313     A                                     2'CUSTOMER19 Total Records:'
+000056190313     A                                      SPACEB(1)
+000057190313     A            CUSTOMERT      5  0     27EDTCDE(1)
+000058190313     A                                    39'Most Recent Last Callback Date:'
+000059190313     A            RECENTDATE      L       71
+000060190313     A                                     2'Total Records with an Unknown Last-
+000061190313     A                                       Callback Date:'
+000062190313     A                                      SPACEB(2)
+000063190313     A            UNKNOWNT       5  0     52EDTCDE(1)
+000100
+000101190313     A*%%RS+<record-sequences>
+000102190313     A*%%RS+ <sequence name="Untitled">
+000103190313     A*%%RS+  <device type="printer" width="132" height="66" />
+000104190313     A*%%RS+  <record-write record-format="SUMMARY" />
+000105190313     A*%%RS+ </sequence>
+000106190313     A*%%RS </record-sequences>
