@@ -1,0 +1,17 @@
+000001181115     A          R OUTPUT                    CF03(03)
+000002181115     A                                      OVERLAY
+000003181115     A            RESULT1       30   O 11 19
+000004181115     A            RESULT2       30   O 12 19
+000005181119     A            RESULT3       30   O 13 19
+000006181115     A                                 16 15'F3 - Exit'
+000007181115     A          R INPUT
+000008181115     A            DATEIN          L  B  4 37
+000009181115     A  90                                  DSPATR(PR)
+000010181115     A                                  4 22'Enter a Date:'
+000011181115     A                                  4 50'yyyy-mm-dd'
+000012181115     A                                  1 21'D a y   O f   W e e k   F u n c t -
+000013181115     A                                      i o n'
+000014181115     A                                  1  4USER
+000015181115     A                                  1 72DATE
+000016181119     A                                      EDTCDE(Y)
+000100
